@@ -547,71 +547,140 @@
     .footer-copy { font-size: 13px; color: #8892aa; }
     .footer-meta { font-size: 13px; font-weight: 500; color: var(--navy); }
 
-    /* ── CONTACT FORM ── */
-    .contact-form-wrap {
-      max-width: 520px;
-      margin: 0 auto;
-      text-align: left;
-      background: rgba(255,255,255,0.04);
-      border: 1.5px solid rgba(255,255,255,0.12);
-      border-radius: 24px;
-      padding: 40px;
+    /* ── ENGAGEMENT MODAL ── */
+    .modal-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(15,28,63,0.6);
+      backdrop-filter: blur(6px);
     }
-    .form-row { margin-bottom: 20px; }
-    .form-row label {
-      display: block;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 8px;
-    }
-    .form-row input,
-    .form-row textarea {
+    .modal-box {
+      position: relative;
+      background: var(--cream);
+      border-radius: 28px;
+      padding: 48px;
+      max-width: 560px;
       width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
-      padding: 14px 16px;
-      font-family: 'DM Sans', sans-serif;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 40px 80px rgba(15,28,63,0.3);
+      z-index: 1;
+    }
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(15,28,63,0.08);
+      border: none; border-radius: 50%;
+      width: 36px; height: 36px;
+      font-size: 14px; cursor: pointer;
+      color: var(--navy); font-weight: 600;
+      transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(15,28,63,0.15); }
+    .modal-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .modal-title {
+      font-family: 'Fraunces', serif;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+    .modal-sub {
       font-size: 15px;
-      color: white;
-      transition: border-color 0.2s, background 0.2s;
+      color: #6b7a99;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      font-weight: 300;
     }
-    .form-row input::placeholder,
-    .form-row textarea::placeholder { color: rgba(255,255,255,0.35); }
-    .form-row input:focus,
-    .form-row textarea:focus {
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #8892aa;
+    }
+    .req { color: var(--coral); }
+    .form-input {
+      border: 1.5px solid rgba(15,28,63,0.15);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--navy);
+      background: white;
       outline: none;
-      border-color: var(--coral);
-      background: rgba(255,255,255,0.09);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
     }
-    .form-row textarea { resize: vertical; min-height: 110px; font-family: 'DM Sans', sans-serif; }
-
-    .form-submit-btn {
+    .form-input:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(255,92,58,0.1); }
+    .form-textarea { resize: vertical; min-height: 100px; font-family: 'DM Sans', sans-serif; }
+    .form-error {
+      background: #fff0ee;
+      border: 1.5px solid #ffccc4;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #c0392b;
+      margin-bottom: 16px;
+    }
+    .form-submit {
       width: 100%;
       background: var(--coral);
       color: white;
       border: none;
-      padding: 16px 36px;
+      padding: 16px;
       border-radius: 100px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
       font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
       transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+      margin-bottom: 12px;
     }
-    .form-submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 92, 58, 0.4); background: white; color: var(--navy); }
-    .form-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-    .form-status {
-      margin-top: 18px;
-      font-size: 14px;
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,92,58,0.3); background: var(--navy); }
+    .form-note {
+      font-size: 12px;
+      color: #aab;
       text-align: center;
+      line-height: 1.5;
     }
-    .form-status.success { color: var(--mint); }
-    .form-status.error { color: #FF8A6E; }
+    .modal-success {
+      text-align: center;
+      padding: 24px 0;
+    }
+    .success-icon { font-size: 60px; margin-bottom: 20px; }
+    .modal-success h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .modal-success p { font-size: 15px; color: #6b7a99; line-height: 1.6; }
+
+    @media (max-width: 640px) {
+      .modal-box { padding: 32px 24px; border-radius: 20px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .modal-title { font-size: 26px; }
+    }
 
     /* ── RESPONSIVE ADAPTABILITY ── */
     @media (max-width: 1024px) {
@@ -654,7 +723,7 @@
       <li><a href="#advisory">Advisory Model</a></li>
       <li><a href="#about">Our DNA</a></li>
     </ul>
-    <a href="#engage" class="cta-btn">Engage Firm</a>
+    <a href="#engage" class="cta-btn" onclick="openEngageModal(); return false;">Engage Firm</a>
   </nav>
 
   <div class="hero">
@@ -670,7 +739,7 @@
       
       <div class="hero-actions">
         <a href="#services" class="btn-primary">Explore Practices</a>
-        <a href="#engage" class="btn-secondary">Start a Conversation</a>
+        <a href="#engage" class="btn-secondary" onclick="openEngageModal(); return false;">Start a Conversation</a>
       </div>
     </div>
 
@@ -955,7 +1024,7 @@
         <div class="section-label" style="color:var(--yellow);">Flexible C-Suite Capacity</div>
         <h2>Enterprise-grade perspective, completely stripped of enterprise overhead.</h2>
         <p>Expanding middle-market enterprises rarely require full-time strategic personnel asset allocations—they require concentrated, institutional executive precision part of the time. We integrate directly into your operating flow to establish structural fiscal wins on a lean, high-velocity model.</p>
-        <a href="#engage" class="btn-primary" style="background:var(--yellow); color:var(--navy);">Review Engagements</a>
+        <a href="#engage" class="btn-primary" style="background:var(--yellow); color:var(--navy);" onclick="openEngageModal(); return false;">Review Engagements</a>
       </div>
     </div>
   </section>
@@ -995,75 +1064,8 @@
     <h2>Ready to expand your margins?</h2>
     <p>Every firm engagement begins as a simple, objective business diagnostic exchange. No dense sales decks, no artificial jargon—just an analysis of where your infrastructure stands today and where you need it to perform tomorrow.</p>
 
-    <div class="contact-form-wrap">
-      <form id="engage-form" action="https://formspree.io/f/meeybznj" method="POST">
-        <input type="hidden" name="_subject" value="New inquiry from atwcloud.com">
-        <div class="form-row">
-          <label for="engage-name">Name</label>
-          <input type="text" id="engage-name" name="name" placeholder="Jane Smith" required>
-        </div>
-        <div class="form-row">
-          <label for="engage-email">Email</label>
-          <input type="email" id="engage-email" name="email" placeholder="jane@company.com" required>
-        </div>
-        <div class="form-row">
-          <label for="engage-company">Company</label>
-          <input type="text" id="engage-company" name="company" placeholder="Company name">
-        </div>
-        <div class="form-row">
-          <label for="engage-message">What are you looking to solve?</label>
-          <textarea id="engage-message" name="message" placeholder="A brief overview of the challenge or opportunity you're working through." required></textarea>
-        </div>
-        <button type="submit" class="form-submit-btn">Initiate Executive Session →</button>
-      </form>
-      <div id="form-status" class="form-status" role="status"></div>
-    </div>
+    <a href="#engage" class="hub-cta" onclick="openEngageModal(); return false;">Initiate Executive Session →</a>
   </div>
-
-  <script>
-    (function () {
-      const form = document.getElementById('engage-form');
-      const statusMsg = document.getElementById('form-status');
-      const submitBtn = form.querySelector('.form-submit-btn');
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        statusMsg.textContent = '';
-        statusMsg.className = 'form-status';
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
-
-        try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            form.reset();
-            form.style.display = 'none';
-            statusMsg.textContent = "Thank you — we've received your message and will follow up within one business day.";
-            statusMsg.classList.add('success');
-          } else {
-            const resData = await response.json().catch(() => null);
-            const errMsg = resData && resData.errors
-              ? resData.errors.map(err => err.message).join(', ')
-              : 'Something went wrong submitting the form. Please try again or email info@atwcloud.com directly.';
-            statusMsg.textContent = errMsg;
-            statusMsg.classList.add('error');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Initiate Executive Session →';
-          }
-        } catch (err) {
-          statusMsg.textContent = 'Something went wrong submitting the form. Please try again or email info@atwcloud.com directly.';
-          statusMsg.classList.add('error');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Initiate Executive Session →';
-        }
-      });
-    })();
-  </script>
 
   <footer>
     <div class="footer-copy">
@@ -1073,6 +1075,110 @@
       North Texas Regional Advisory Base
     </div>
   </footer>
+
+  <div id="engageModal" style="display:none; position:fixed; inset:0; z-index:1000; align-items:center; justify-content:center; padding:24px;">
+    <div class="modal-backdrop" onclick="closeEngageModal()"></div>
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeEngageModal()">✕</button>
+      <div class="modal-header">
+        <div class="modal-tag">Initiate Evaluation</div>
+        <h2 class="modal-title">Start a conversation</h2>
+        <p class="modal-sub">Every engagement begins as a simple, objective business diagnostic exchange. Tell us where things stand today.</p>
+      </div>
+
+      <div id="engageModalForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Name <span class="req">*</span></label>
+            <input class="form-input" type="text" id="engageName" placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email <span class="req">*</span></label>
+            <input class="form-input" type="email" id="engageEmail" placeholder="jane@company.com">
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Company</label>
+            <input class="form-input" type="text" id="engageCompany" placeholder="Company name">
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">What are you looking to solve? <span class="req">*</span></label>
+            <textarea class="form-input form-textarea" id="engageMessage" placeholder="A brief overview of the challenge or opportunity you're working through."></textarea>
+          </div>
+        </div>
+
+        <div class="form-error" id="engageFormError" style="display:none;"></div>
+
+        <button class="form-submit" onclick="submitEngageForm()">Initiate Executive Session →</button>
+        <p class="form-note">We'll review your submission and follow up within one business day.</p>
+      </div>
+
+      <div id="engageModalSuccess" style="display:none;" class="modal-success">
+        <div class="success-icon">🎉</div>
+        <h3>You're on your way!</h3>
+        <p>Thanks, <strong id="engageSuccessName"></strong> — we've received your message and will follow up within one business day.</p>
+        <button class="form-submit" style="margin-top:24px;" onclick="closeEngageModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openEngageModal() {
+      const modal = document.getElementById('engageModal');
+      modal.style.display = 'flex';
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    function closeEngageModal() {
+      const modal = document.getElementById('engageModal');
+      modal.style.display = 'none';
+      document.documentElement.style.overflow = '';
+      document.getElementById('engageModalForm').style.display = 'block';
+      document.getElementById('engageModalSuccess').style.display = 'none';
+      document.getElementById('engageFormError').style.display = 'none';
+    }
+
+    function submitEngageForm() {
+      const name = document.getElementById('engageName').value.trim();
+      const email = document.getElementById('engageEmail').value.trim();
+      const company = document.getElementById('engageCompany').value.trim();
+      const message = document.getElementById('engageMessage').value.trim();
+      const errorEl = document.getElementById('engageFormError');
+
+      if (!name || !email || !message) {
+        errorEl.textContent = 'Please fill in all required fields before submitting.';
+        errorEl.style.display = 'block';
+        errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+      document.getElementById('engageSuccessName').textContent = name;
+      document.getElementById('engageModalForm').style.display = 'none';
+      document.getElementById('engageModalSuccess').style.display = 'block';
+
+      fetch('https://formspree.io/f/meeybznj', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          company: company,
+          message: message,
+          _subject: 'New inquiry from atwcloud.com'
+        })
+      }).catch(() => {});
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeEngageModal();
+    });
+  </script>
 
 </body>
 </html>
